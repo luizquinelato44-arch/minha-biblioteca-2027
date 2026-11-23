@@ -1,0 +1,9 @@
+Minha Biblioteca 2027 — PWA
+
+Para instalar pelo Chrome, primeiro publique os arquivos desta pasta juntos em uma hospedagem HTTPS. O arquivo index.html sozinho aberto pelo gerenciador de arquivos não instala um PWA.
+
+Exemplo usando apenas o celular: acesse https://app.netlify.com/drop pelo Chrome, escolha o ZIP ou a pasta descompactada se o serviço permitir, publique e abra o endereço HTTPS gerado. Dependendo da interface do serviço, pode ser necessário descompactar e enviar a pasta ou usar um repositório GitHub + Netlify.
+
+Depois abra o endereço publicado no Chrome > menu de três pontos > Instalar aplicativo (ou Adicionar à tela inicial).
+
+Os dados ficam no armazenamento do navegador para a origem HTTPS publicada. Faça backups em JSON. Não exclua os dados do site. Migrar do HTML local para o endereço publicado não transfere os dados automaticamente: exporte backup no HTML anterior e restaure no PWA.
