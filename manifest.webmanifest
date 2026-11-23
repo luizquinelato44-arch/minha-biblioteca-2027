@@ -1,6 +1,6 @@
 {
-  "name": "Minha Biblioteca 2027",
-  "short_name": "Biblioteca 2027",
+  "name": "Minha Biblioteca",
+  "short_name": "Biblioteca",
   "description": "Seu diário literário e acompanhamento de leituras",
   "start_url": "./",
   "scope": "./",
