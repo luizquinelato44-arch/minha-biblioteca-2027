@@ -1,6 +1,6 @@
 {
-  "name": "Minha Biblioteca",
-  "short_name": "Biblioteca",
+  "name": "Livros do Luizin",
+  "short_name": "Livros do Luizin",
   "description": "Seu diário literário e acompanhamento de leituras",
   "start_url": "./",
   "scope": "./",
