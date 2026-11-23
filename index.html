@@ -11,7 +11,7 @@ function toRoman(n){let r='';for(const [v,c] of [[50,'L'],[40,'XL'],[10,'X'],[9,
 function romanValue(s){const map={I:1,V:5,X:10,L:50};let n=0,p=0;for(const c of s.split('').reverse()){const v=map[c]||0;n+=v<p?-v:v;p=v}return n}
 function parseToc(text){const result=[];let expected=1;for(const raw of text.split(/\r?\n/)){let line=cleanToc(raw);if(!line||line.length<4||line.length>150||/^\d+$/.test(line)||/^(sum[aá]rio|[ií]ndice|conte[uú]do|p[aá]gina)$/i.test(line))continue;let match=line.match(/^(.*?)\s+(\d{1,4})$/);let page=match?Number(match[2]):null;let title=(match?match[1]:line).replace(/[\s.:|—-]+$/,'').trim();let kind='chapter',number=null;
 if(/^(PRIMEIRA|SEGUNDA|TERCEIRA|QUARTA|QUINTA)\s+PARTE\b/i.test(title)){kind='part';title=title.toLocaleUpperCase('pt-BR').replace(/\s+O\s*[-—]*$/,'').replace(/\s*[~—-]+\s*/g,' — ');page=null}
-else if(/^L[I1]VR[O0]\s+/i.test(title)){kind='book';title=title.toLocaleUpperCase('pt-BR').replace(/^L[I1]VR[O0]/,'LIVRO').replace(/\s*:\s*/,' — ');page=null;expected=1}
+else if(/^[L1I][I1|!][Vv][Rr][O0o]\s+/i.test(title)){kind='book';title=title.toLocaleUpperCase('pt-BR').replace(/^[L1I][I1|!][Vv][Rr][O0o]/i,'LIVRO').replace(/\s*:\s*/,' — ');page=null;expected=1}
 else{const m=title.match(/^([IVXLCDM1|!0O]{1,6})\s*[.):\-]\s*(.+)$/i);if(m){let r=m[1].toUpperCase().replace(/[1|!]/g,'I').replace(/[0O]/g,'I');const val=romanValue(r);if(!val||toRoman(val)!==r||Math.abs(val-expected)>2)r=toRoman(expected);number=r;expected=romanValue(r)+1;title=m[2]}title=title[0].toLocaleUpperCase('pt-BR')+title.slice(1)}
 if(title.length<3)continue;result.push({kind,number,title,page})}return result}
 function tocLine(x){return (x.number?x.number+'. ':'')+x.title+(x.page!=null?' | p. '+x.page:'')}
